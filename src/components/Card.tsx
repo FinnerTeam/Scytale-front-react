@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 });
 const PullReqCard = (props: any) => {
   const { title, status, author, createdAt, labels, description } = props;
-  const classes = useStyles(props);
+  const classes = useStyles();
   return (
     <Card className={classes.root}>
       <h2>{title}</h2>

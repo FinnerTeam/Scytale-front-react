@@ -2,18 +2,17 @@
 
 * {
   box-sizing: border-box;
+  color:black;
 }
 
 :root {
- --main-color: rgb(60,69,175);
- --secondary-color: rgb(105, 114, 211);
- --secondary-color-hover: rgb(87, 98, 223);
- --main-color-strong: rgb(33, 43, 144);
-  background-color: #bad8e9
+ --main-color: rgb(231, 231, 231);
+  background-color: rgb(228, 189, 82);
 }
 
 
 body {
+  color:black;
   font-family: 'Open Sans', 'Lato', sans-serif;
   margin: 0;
 }
