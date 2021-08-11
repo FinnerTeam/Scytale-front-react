@@ -1,11 +1,13 @@
-import Card from "./Card";
 import { useSelector } from "react-redux";
+import Card from "./Card";
+import SearchBar from "./SearchBar";
 
 const Dashboard = () => {
   const pullRequests = useSelector((state: any) => state.pullRequests);
   return (
     <div>
       dashboard
+      <SearchBar />
       {pullRequests.map((pullRequest: any) => (
         <Card
           title={pullRequest.title}
