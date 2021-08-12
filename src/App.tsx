@@ -1,15 +1,10 @@
 import Layout from "./components/Layout/Layout";
-import { Switch, Route } from "react-router-dom";
-import { Suspense } from "react";
+import { Route } from "react-router-dom";
 import DashBoard from "./pages/Dashboard";
 const App: React.FC = () => {
   return (
     <Layout>
-      <Suspense fallback={<div></div>}>
-        <Switch>
-          <Route path="*" component={DashBoard} />
-        </Switch>
-      </Suspense>
+      <Route path="*" component={DashBoard} />
     </Layout>
   );
 };

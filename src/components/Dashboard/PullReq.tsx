@@ -1,18 +1,10 @@
-import Card from "@material-ui/core/Card";
-import { makeStyles } from "@material-ui/core/styles";
 import { timeFromNow } from "../../helpers/time";
 import { capitalize } from "../../helpers/capitalize";
+import Card from "../UI/Card";
+import { makeStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
 
 const useStyles = makeStyles({
-  root: {
-    backgroundColor: "var(--main-color)",
-    width: "95%",
-    maxWidth: "35rem",
-    margin: "1.5rem auto",
-    padding: "1rem 1.3rem 1rem 1.3rem",
-    borderRadius: "10px",
-  },
   header: {
     display: "flex",
     flexDirection: "row",
@@ -46,7 +38,7 @@ const PullReqCard: React.FC<pullRequest> = (props) => {
   const time = timeFromNow(createdAt);
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
+    <Card>
       <header className={classes.header}>
         <span className={classes.title}>{capitalize(title)}</span>
         <span>

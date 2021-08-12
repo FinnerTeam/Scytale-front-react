@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPullRequests } from "../../redux/pullRequests";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import Dropdown from "./Dropdown";
+import Dropdown from "../UI/Dropdown";
 
 const useStyles = makeStyles({
   root: {

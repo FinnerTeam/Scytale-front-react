@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     minWidth: "70px",
   },
 });
-const Dropdown: React.FC<props> = (props) => {
+const DropdownUI: React.FC<props> = (props) => {
   const { stateHandler, array, style, value } = props;
   const classes = useStyles();
   return (
@@ -31,4 +31,4 @@ const Dropdown: React.FC<props> = (props) => {
     </select>
   );
 };
-export default Dropdown;
+export default DropdownUI;

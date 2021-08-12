@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Card from "./Card";
+import Card from "./PullReq";
 import SearchBar from "./SearchBar";
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({

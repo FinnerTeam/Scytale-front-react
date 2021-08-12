@@ -23,7 +23,6 @@ export const getPullRequests = (
           label || "all"
         }&sortingOrder=${sortingOrder}&sortingMethod=${sortingMethod}`
       );
-      console.log(response);
       dispatch(
         prActions.setPullRequests({
           ...initialState,
