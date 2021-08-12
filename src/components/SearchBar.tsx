@@ -27,7 +27,6 @@ const useStyles = makeStyles({
 const SearchBar: React.FC = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
-
   const statuses = ["All", "Draft", "Open", "Closed"];
   const sortMethods = ["Title", "Creation"];
   const [status, setStatus] = useState("All");

@@ -12,4 +12,15 @@ interface pullRequest {
   labels: string[];
   description: string;
 }
+interface state {
+  pullRequests: prsState;
+}
+
+interface prsState {
+  data: pullRequest[];
+  isLoading: boolean;
+  isError: boolean;
+  errorMessage: string;
+}
+
 type AppDispatch = typeof store.dispatch;
