@@ -1,8 +1,6 @@
 /// <reference types="react-scripts" />
 
 type statusType = "All" | "Draft" | "Open" | "Closed";
-type sortingMethodType = "creation" | "title";
-type sortingOrder = 1 | -1;
 
 interface pullRequest {
   title: string;
@@ -11,6 +9,7 @@ interface pullRequest {
   createdAt: Date;
   labels: string[];
   description: string;
+  _id?: any;
 }
 interface state {
   pullRequests: prsState;
@@ -22,6 +21,9 @@ interface prsState {
   isLoading: boolean;
   isError: boolean;
   errorMessage: string;
+  currentPage: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
 }
 
 type AppDispatch = typeof store.dispatch;

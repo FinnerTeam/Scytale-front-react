@@ -6,6 +6,7 @@ interface props {
   array: string[];
   style: any;
   value: string;
+  title: string;
 }
 
 const useStyles = makeStyles({
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 const DropdownUI: React.FC<props> = (props) => {
-  const { stateHandler, array, style, value } = props;
+  const { stateHandler, array, style, value, title } = props;
   const classes = useStyles();
   return (
     <select
@@ -24,9 +25,11 @@ const DropdownUI: React.FC<props> = (props) => {
       onChange={stateHandler}
       className={clsx(classes.select, style)}
     >
-      <option value={"all"}>{value}</option>
+      <option value={"all"}>{title}</option>
       {array.map((element) => (
-        <option value={element}>{element}</option>
+        <option value={element} key={element}>
+          {element}
+        </option>
       ))}
     </select>
   );

@@ -49,7 +49,7 @@ const PullReqCard: React.FC<pullRequest> = (props) => {
       <p className={classes.description}>{description}</p>
       <div className={classes.labels}>
         {labels.map((label: string) => (
-          <Chip label={label} className={classes.label} />
+          <Chip label={label} className={classes.label} key={label} />
         ))}
       </div>
       <footer className={classes.footer}>
