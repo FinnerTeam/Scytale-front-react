@@ -8,6 +8,7 @@
 :root {
  --main-color: rgb(231, 231, 231);
  --secondary-color: rgb(228, 189, 82);
+ --color-blue: #5272E3;
   background-color: var(--secondary-color) ;
 }
 
