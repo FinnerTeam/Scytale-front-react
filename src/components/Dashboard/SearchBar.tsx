@@ -32,7 +32,7 @@ const SearchBar: React.FC = () => {
   const [status, setStatus] = useState("");
   const [label, setLabel] = useState("");
   const [sortingMethod, setSortingMethod] = useState("Creation");
-  const [sortingOrder, setOrder] = useState<1 | -1>(1);
+  const [sortingOrder, setOrder] = useState<1 | -1>(-1);
   const labels = useSelector((state: state) => state.pullRequests.labels);
   const orderHandler = () => {
     if (sortingOrder === 1) {

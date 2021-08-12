@@ -11,6 +11,7 @@ interface props {
 const useStyles = makeStyles({
   select: {
     padding: 3,
+    minWidth: "70px",
   },
 });
 const Dropdown: React.FC<props> = (props) => {
