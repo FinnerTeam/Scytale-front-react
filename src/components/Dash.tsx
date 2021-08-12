@@ -6,14 +6,6 @@ const useStyles = makeStyles({
   root: {
     textAlign: "center",
   },
-  title: {
-    fontSize: "2.5rem",
-    margin: "0",
-  },
-  logo: {
-    height: 60,
-    width: 60,
-  },
   message: {
     marginTop: "80px",
   },

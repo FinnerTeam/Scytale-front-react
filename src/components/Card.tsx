@@ -27,15 +27,17 @@ const useStyles = makeStyles({
   description: { textAlign: "left" },
   line: {
     border: "1px solid var(--secondary-color)",
+    backgroundColor: "var(--secondary-color)",
   },
   label: { backgroundColor: "var(--color-blue)" },
-  labels: { marginTop: "2rem", textAlign: "left" },
+  labels: { marginTop: "3rem", textAlign: "left" },
   footer: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: "10px",
+    marginTop: "5px",
     borderTop: "1px solid rgb(192,192,192)	",
+    paddingTop: "10px",
   },
 });
 
