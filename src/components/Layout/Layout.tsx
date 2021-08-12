@@ -4,7 +4,7 @@ const Layout: React.FC = (props) => {
   return (
     <>
       <Header />
-      <main style={{ marginTop: "10rem" }}>{props.children}</main>
+      <main style={{ marginTop: "15vh" }}>{props.children}</main>
     </>
   );
 };

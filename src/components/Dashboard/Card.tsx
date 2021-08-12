@@ -1,7 +1,7 @@
 import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
-import { timeFromNow } from "../helpers/time";
-import { capitalize } from "../helpers/capitalize";
+import { timeFromNow } from "../../helpers/time";
+import { capitalize } from "../../helpers/capitalize";
 import Chip from "@material-ui/core/Chip";
 
 const useStyles = makeStyles({

@@ -19,7 +19,9 @@ export const getPullRequests = (
     try {
       dispatch(prActions.setPullRequests({ ...initialState, isLoading: true }));
       const response = await axios.get(
-        `http://localhost:5000/prs/?prStatus=${status}&labels=[]${label}&sortingOrder=${sortingOrder}&sortingMethod=${sortingMethod}`
+        `http://localhost:5000/prs/?prStatus=${status || "all"}&labels=${
+          label || "all"
+        }&sortingOrder=${sortingOrder}&sortingMethod=${sortingMethod}`
       );
       console.log(response);
       dispatch(

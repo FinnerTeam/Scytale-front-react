@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPullRequests } from "../redux/pullRequests";
+import { getPullRequests } from "../../redux/pullRequests";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
+import Dropdown from "./Dropdown";
 
 const useStyles = makeStyles({
   root: {
@@ -26,10 +27,10 @@ const useStyles = makeStyles({
 const SearchBar: React.FC = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const statuses = ["All", "Draft", "Open", "Closed"];
+  const statuses = ["Draft", "Open", "Closed"];
   const sortMethods = ["Title", "Creation"];
-  const [status, setStatus] = useState("All");
-  const [label, setLabel] = useState("All");
+  const [status, setStatus] = useState("");
+  const [label, setLabel] = useState("");
   const [sortingMethod, setSortingMethod] = useState("Creation");
   const [sortingOrder, setOrder] = useState<1 | -1>(1);
   const labels = useSelector((state: state) => state.pullRequests.labels);
@@ -56,36 +57,24 @@ const SearchBar: React.FC = () => {
   };
   return (
     <>
-      <select
-        name="statuses"
-        id="statuses"
-        onChange={statusHandler}
-        className={clsx(classes.select, classes.root)}
-      >
-        {statuses.map((status) => (
-          <option value={status}>{status}</option>
-        ))}
-      </select>
-      <select
-        name="sortMethods"
-        id="sortMethods"
-        onChange={sortingMethodHandler}
-        className={clsx(classes.select, classes.root)}
-      >
-        {sortMethods.map((method) => (
-          <option value={method}>{method}</option>
-        ))}
-      </select>
-      <select
-        name="labels"
-        id="labels"
-        onChange={labelHandler}
-        className={clsx(classes.select, classes.root)}
-      >
-        <option value={"All"}>All</option>
-        {labels.length > 0 &&
-          labels.map((label) => <option value={label}>{label}</option>)}
-      </select>
+      <Dropdown
+        stateHandler={statusHandler}
+        value={"statuses"}
+        array={statuses}
+        style={classes.root}
+      />
+      <Dropdown
+        stateHandler={sortingMethodHandler}
+        value={"sortMethods"}
+        array={sortMethods}
+        style={classes.root}
+      />
+      <Dropdown
+        stateHandler={labelHandler}
+        value={"labels"}
+        array={labels}
+        style={classes.root}
+      />
       <button
         onClick={orderHandler}
         className={clsx(classes.button, classes.root)}
