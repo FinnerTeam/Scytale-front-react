@@ -32,10 +32,10 @@ const SearchBar: React.FC<Props> = (props: Props) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const statuses = ["Draft", "Open", "Closed"];
-  const sortMethods = ["Title", "Creation"];
+  const sortMethods = ["Title", "Created At"];
   const [status, setStatus] = useState("all");
   const [label, setLabel] = useState("all");
-  const [sortingMethod, setSortingMethod] = useState("Creation");
+  const [sortingMethod, setSortingMethod] = useState("_id");
   const [sortingOrder, setOrder] = useState<1 | -1>(-1);
   const labels = useSelector((state: state) => state.pullRequests.labels);
   const orderHandler = () => {
