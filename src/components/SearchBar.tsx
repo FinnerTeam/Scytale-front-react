@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getPullRequests } from "../redux/pullRequests";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
@@ -30,9 +29,10 @@ const SearchBar: React.FC = () => {
   const statuses = ["All", "Draft", "Open", "Closed"];
   const sortMethods = ["Title", "Creation"];
   const [status, setStatus] = useState("All");
+  const [label, setLabel] = useState("All");
   const [sortingMethod, setSortingMethod] = useState("Creation");
   const [sortingOrder, setOrder] = useState<1 | -1>(1);
-
+  const labels = useSelector((state: state) => state.pullRequests.labels);
   const orderHandler = () => {
     if (sortingOrder === 1) {
       return setOrder(-1);
@@ -41,8 +41,8 @@ const SearchBar: React.FC = () => {
   };
 
   useEffect(() => {
-    dispatch(getPullRequests(status, sortingMethod, sortingOrder));
-  }, [dispatch, status, sortingMethod, sortingOrder]);
+    dispatch(getPullRequests(status, sortingMethod, sortingOrder, label));
+  }, [dispatch, status, sortingMethod, sortingOrder, label]);
 
   const statusHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setStatus(e.target.value);
@@ -50,6 +50,9 @@ const SearchBar: React.FC = () => {
 
   const sortingMethodHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortingMethod(e.target.value);
+  };
+  const labelHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLabel(e.target.value);
   };
   return (
     <>
@@ -72,6 +75,16 @@ const SearchBar: React.FC = () => {
         {sortMethods.map((method) => (
           <option value={method}>{method}</option>
         ))}
+      </select>
+      <select
+        name="labels"
+        id="labels"
+        onChange={labelHandler}
+        className={clsx(classes.select, classes.root)}
+      >
+        <option value={"All"}>All</option>
+        {labels.length > 0 &&
+          labels.map((label) => <option value={label}>{label}</option>)}
       </select>
       <button
         onClick={orderHandler}

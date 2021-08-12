@@ -4,26 +4,30 @@ import axios from "axios";
 const initialState = {
   isLoading: false,
   isError: false,
+  labels: [],
   errorMessage: "",
-  data: [],
+  prs: [],
 };
 
 export const getPullRequests = (
   status: string,
   sortingMethod: string,
-  sortingOrder: number
+  sortingOrder: number,
+  label: string
 ) => {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(prActions.setPullRequests({ ...initialState, isLoading: true }));
       const response = await axios.get(
-        `http://localhost:5000/prs/?prStatus=${status}&labels=[]&sortingOrder=${sortingOrder}&sortingMethod=${sortingMethod}`
+        `http://localhost:5000/prs/?prStatus=${status}&labels=[]${label}&sortingOrder=${sortingOrder}&sortingMethod=${sortingMethod}`
       );
+      console.log(response);
       dispatch(
         prActions.setPullRequests({
           ...initialState,
           isLoading: false,
-          data: response.data,
+          prs: response.data.prs,
+          labels: response.data.labels,
         })
       );
     } catch (err) {

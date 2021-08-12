@@ -17,7 +17,8 @@ interface state {
 }
 
 interface prsState {
-  data: pullRequest[];
+  prs: pullRequest[];
+  labels: string[];
   isLoading: boolean;
   isError: boolean;
   errorMessage: string;

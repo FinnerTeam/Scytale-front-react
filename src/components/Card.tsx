@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     border: "1px solid var(--secondary-color)",
     backgroundColor: "var(--secondary-color)",
   },
-  label: { backgroundColor: "var(--color-blue)" },
+  label: { backgroundColor: "var(--color-blue)", margin: "0 5px 0 5px" },
   labels: { marginTop: "3rem", textAlign: "left" },
   footer: {
     display: "flex",
