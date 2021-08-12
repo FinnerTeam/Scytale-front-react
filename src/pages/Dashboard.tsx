@@ -1,6 +1,6 @@
 import Dashboard from "../components/Dash";
 
-const DashboardPage = () => {
+const DashboardPage: React.FC = () => {
   return <Dashboard />;
 };
 

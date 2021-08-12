@@ -38,7 +38,8 @@ const useStyles = makeStyles({
     borderTop: "1px solid rgb(192,192,192)	",
   },
 });
-const PullReqCard = (props: any) => {
+
+const PullReqCard: React.FC<pullRequest> = (props) => {
   const { title, status, author, createdAt, labels, description } = props;
   const time = timeFromNow(createdAt);
   const classes = useStyles();

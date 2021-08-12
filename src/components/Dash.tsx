@@ -18,15 +18,18 @@ const useStyles = makeStyles({
     marginTop: "80px",
   },
 });
+interface state {
+  pullRequests: pullRequest[];
+}
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   const classes = useStyles();
-  const pullRequests = useSelector((state: any) => state.pullRequests);
+  const pullRequests = useSelector((state: state) => state.pullRequests);
   return (
     <div className={classes.root}>
       <h1>Pull Request Dashboard</h1>
       <SearchBar />
-      {pullRequests.map((pullRequest: any) => (
+      {pullRequests.map((pullRequest: pullRequest) => (
         <Card
           title={pullRequest.title}
           status={pullRequest.status}

@@ -1,6 +1,6 @@
 import Header from "./Header";
 
-const Layout = (props: any) => {
+const Layout: React.FC = (props) => {
   return (
     <>
       <Header />

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getPullRequests } from "../store/pullRequests";
+import { getPullRequests } from "../redux/pullRequests";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-const SearchBar = () => {
+const SearchBar: React.FC = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
 

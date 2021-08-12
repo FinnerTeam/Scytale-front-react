@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     width: 60,
   },
 });
-const MainNavigation = () => {
+const MainNavigation: React.FC = () => {
   const classes = useStyles();
   return (
     <header className={classes.header}>

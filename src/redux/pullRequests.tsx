@@ -1,15 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getPullRequests = (...args: any) => {
-  return async (dispatch: any) => {
-    const [status, sortingMethod, sortingOrder] = args;
-    console.log(status, sortingMethod, sortingOrder);
+export const getPullRequests = (
+  status: string,
+  sortingMethod: string,
+  sortingOrder: number
+) => {
+  return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.get(
         `http://localhost:5000/prs/?prStatus=${status}&labels=[]&sortingOrder=${sortingOrder}&sortingMethod=${sortingMethod}`
       );
-      console.log(response);
       dispatch(prActions.setPullRequests(response.data));
     } catch (err) {
       console.log(err.message, err.errors);
@@ -21,10 +22,6 @@ const pullReqSlice = createSlice({
   name: "pullRequests",
   initialState: [],
   reducers: {
-    // addPullRequest(state, action) {
-    //   const newArray = [action.payload, ...state];
-    //   return newArray;
-    // },
     setPullRequests(state, action) {
       const newArray = action.payload;
       return newArray;
