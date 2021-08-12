@@ -14,6 +14,9 @@ const useStyles = makeStyles({
     height: 60,
     width: 60,
   },
+  message: {
+    marginTop: "80px",
+  },
 });
 
 const Dashboard = () => {
@@ -33,6 +36,9 @@ const Dashboard = () => {
           createdAt={pullRequest.createdAt}
         />
       ))}
+      {pullRequests.length === 0 && (
+        <h4 className={classes.message}>No relevant pull requests to show.</h4>
+      )}
     </div>
   );
 };

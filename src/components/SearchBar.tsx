@@ -2,9 +2,32 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getPullRequests } from "../store/pullRequests";
+import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+
+const useStyles = makeStyles({
+  root: {
+    borderRadius: "5px",
+    margin: "5px",
+    "&:hover": {
+      backgroundColor: "var(--color-blue)",
+      color: "white",
+      cursor: "pointer",
+    },
+  },
+  select: {
+    padding: 3,
+  },
+  button: {
+    border: "1px solid grey",
+    padding: 4,
+  },
+});
 
 const SearchBar = () => {
   const dispatch = useDispatch();
+  const classes = useStyles();
+
   const statuses = ["All", "Draft", "Open", "Closed"];
   const sortMethods = ["Title", "Creation"];
   const [status, setStatus] = useState("All");
@@ -31,7 +54,12 @@ const SearchBar = () => {
   };
   return (
     <>
-      <select name="statuses" id="statuses" onChange={statusHandler}>
+      <select
+        name="statuses"
+        id="statuses"
+        onChange={statusHandler}
+        className={clsx(classes.select, classes.root)}
+      >
         {statuses.map((status) => (
           <option value={status}>{status}</option>
         ))}
@@ -40,12 +68,16 @@ const SearchBar = () => {
         name="sortMethods"
         id="sortMethods"
         onChange={sortingMethodHandler}
+        className={clsx(classes.select, classes.root)}
       >
         {sortMethods.map((method) => (
           <option value={method}>{method}</option>
         ))}
       </select>
-      <button onClick={orderHandler}>
+      <button
+        onClick={orderHandler}
+        className={clsx(classes.button, classes.root)}
+      >
         {sortingOrder === 1 ? "ascending" : "descending"}
       </button>
     </>
