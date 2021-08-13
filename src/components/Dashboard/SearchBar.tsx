@@ -4,7 +4,7 @@ import { getPullRequests } from "../../redux/pullReq/actions";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Dropdown from "../UI/Dropdown";
-
+import Label from "./Label";
 const useStyles = makeStyles({
   root: {
     borderRadius: "5px",
@@ -21,6 +21,10 @@ const useStyles = makeStyles({
   button: {
     border: "1px solid grey",
     padding: 4,
+  },
+  wrap: {
+    display: "flex",
+    justifyContent: "center",
   },
 });
 interface Props {
@@ -61,12 +65,15 @@ const SearchBar: React.FC<Props> = (props: Props) => {
     }
     setSortingMethod(e.target.value);
   };
-  const labelHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLabel(e.target.value);
+  const labelHandler = (label: string) => {
+    if (!label) {
+      return setLabel("all");
+    }
+    setLabel(label);
   };
 
   return (
-    <>
+    <div className={classes.wrap}>
       <Dropdown
         stateHandler={statusHandler}
         value={"statuses"}
@@ -81,20 +88,15 @@ const SearchBar: React.FC<Props> = (props: Props) => {
         array={sortMethods}
         style={classes.root}
       />
-      <Dropdown
-        stateHandler={labelHandler}
-        value={"labels"}
-        title={"Label"}
-        array={labels}
-        style={classes.root}
-      />
       <button
         onClick={orderHandler}
         className={clsx(classes.button, classes.root)}
       >
         {sortingOrder === 1 ? "Ascending" : "Descending"}
       </button>
-    </>
+      <Label labels={labels} stateHandler={labelHandler} />
+      {/* <span> {label}</span> */}
+    </div>
   );
 };
 export default SearchBar;
